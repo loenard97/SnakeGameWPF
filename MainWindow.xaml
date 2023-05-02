@@ -29,12 +29,6 @@
             </GroupBox>
             <GroupBox Grid.Row="1" BorderThickness="2" Header="High Scores">
                 <StackPanel>
-                    <!--
-                    <DataGrid Name="scoreTable" Height="200" ItemsSource="{Binding}" AutoGenerateColumns="False">
-                        <DataGridTextColumn Header="Name" Binding="{Binding Name}" />
-                        <DataGridTextColumn Header="Score" Binding="{Binding Value}" />
-                    </DataGrid>
-                    -->
                     <DataGrid ItemsSource="{Binding Path=DataRows}" />
                 </StackPanel>
             </GroupBox>

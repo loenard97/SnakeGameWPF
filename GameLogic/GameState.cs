@@ -2,6 +2,11 @@
 
 namespace SnakeGameWPF.GameLogic
 {
+    public enum GameStateReturn
+    {
+        Updated, GameOver,
+    }
+
     public enum Directions
     {
         Up, Down, Left, Right,
@@ -41,20 +46,21 @@ namespace SnakeGameWPF.GameLogic
             SpawnNewApple();
         }
 
-        public void Update()
+        public GameStateReturn Update()
         {
             switch (Snake.MoveBody(Apple))
             {
                 case MoveSnakeResult.Moved:
-                    break;
+                    return GameStateReturn.Updated;
                 case MoveSnakeResult.Died:
                     GameOver = true;
-                    break;
+                    return GameStateReturn.GameOver;
                 case MoveSnakeResult.Ate:
                     Score += 1;
                     SpawnNewApple();
-                    break;
+                    return GameStateReturn.Updated;
             }
+            return GameStateReturn.GameOver;
         }
 
         private void SpawnNewApple()
